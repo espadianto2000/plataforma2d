@@ -8,10 +8,12 @@ public class FireballController : MonoBehaviour
 
     private Vector3 mDirection;
     private float mTimer = 0f;
+    private barraPower bp;
 
     private void Start()
     {
         mDirection = GameManager.GetInstance().hero.GetDirection();
+        bp = GameObject.Find("Bar_6").GetComponent<barraPower>();
     }
 
     private void Update()
@@ -27,6 +29,10 @@ public class FireballController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.transform.CompareTag("enemy"))
+        {
+            bp.hitEnemigo();
+        }
         Destroy(gameObject);
     }
 }

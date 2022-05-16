@@ -5,11 +5,13 @@ TagManager:
   serializedVersion: 2
   tags:
   - Fireball
+  - enemy
+  - platform
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - player
   - Water
   - UI
   - 
