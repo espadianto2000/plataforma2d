@@ -35,6 +35,7 @@ public class HeroController : MonoBehaviour
     private SpriteRenderer mSpriteRenderer;
     private bool doubleJ = true;
     public Collider2D platColl;
+    public bool cayendo = false;
     
 
     private void Start()
@@ -126,10 +127,13 @@ public class HeroController : MonoBehaviour
         if (vivo)
         {
             Move();
-            if (mRigidBody.velocity.y < 0)
+            if (!cayendo && mRigidBody.velocity.y < 0)
             {
                 // Esta cayendo
+                cayendo = true;
                 mRigidBody.gravityScale = 5;
+                //mAnimator.SetTrigger("fall");
+                mAnimator.SetBool("isFalling", true);
                 /*
                 mRigidBody.velocity += (fallMultiplier - 1) * 
                     Time.fixedDeltaTime * Physics2D.gravity;
@@ -157,6 +161,8 @@ public class HeroController : MonoBehaviour
         mRigidBody.velocity = new Vector2(mRigidBody.velocity.x, 0);
         mRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         mRigidBody.gravityScale = 1;
+        cayendo = false;
+        mAnimator.SetBool("isFalling", false);
     }
     private void dashear()
     {
@@ -201,12 +207,13 @@ public class HeroController : MonoBehaviour
             Vector2.down,
             raycastDistance
         );
+        if(hit && cayendo)
+        {
+            cayendo = false;
+            mAnimator.SetBool("isFalling",false);
+        }
         mRigidBody.gravityScale = hit ? 1 : mRigidBody.gravityScale;
         mAnimator.SetBool("IsJumping", !hit);
-        if (!hit && mAnimator.GetCurrentAnimatorClipInfo(0)[0].clip.name !="Jump")
-        {
-            mAnimator.SetTrigger("jump");
-        }
         doubleJ = !doubleJ ? hit : doubleJ;
         return !hit;
     }
