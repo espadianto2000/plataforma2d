@@ -14,19 +14,15 @@ public class EnemyController : MonoBehaviour
         mHealth = maxHealth;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void bajarVida()
     {
-        if (collision.gameObject.CompareTag("Fireball"))
+        mHealth -= maxHealth * 0.25f;
+        healthbar.value = mHealth/maxHealth;
+
+
+        if (mHealth <= 0)
         {
-            // Hubo una colision
-            mHealth -= maxHealth * 0.25f;
-            healthbar.value -= 0.25f;
-
-
-            if (mHealth <= 0)
-            {
-                Destroy(gameObject);
-            }
+            Destroy(gameObject);
         }
     }
 }

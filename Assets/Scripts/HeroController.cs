@@ -78,6 +78,7 @@ public class HeroController : MonoBehaviour
             
 
             bool isOnAir = IsOnAir();
+            mAnimator.SetBool("inFloor", isOnAir ? false : true);
             if (Input.GetButtonDown("Jump"))
             {
                 if (dash)
@@ -98,7 +99,7 @@ public class HeroController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
             {
-                if (bp.sl.fillAmount >= 1)
+                if (/*bp.sl.fillAmount >= 1*/true)
                 {
                     dashear();
                     bp.sl.fillAmount = 0;
@@ -127,7 +128,7 @@ public class HeroController : MonoBehaviour
         if (vivo)
         {
             Move();
-            if (!cayendo && mRigidBody.velocity.y < 0)
+            if (!cayendo && mRigidBody.velocity.y < 0 && IsOnAir())
             {
                 // Esta cayendo
                 cayendo = true;
@@ -219,9 +220,10 @@ public class HeroController : MonoBehaviour
     }
     private void Fire()
     {
-        mFireballPoint.GetComponent<ParticleSystem>().Play(); // ejecutamos PS
         GameObject obj = Instantiate(fireball, mFireballPoint);
         obj.transform.parent = null;
+        obj.GetComponentInChildren<ParticleSystem>().Play();
+        //mFireballPoint.GetComponent<ParticleSystem>().Play(); // ejecutamos PS
     }
 
     public Vector3 GetDirection()

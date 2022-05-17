@@ -32,6 +32,7 @@ public class FireballController : MonoBehaviour
         if (collision.transform.CompareTag("enemy"))
         {
             bp.hitEnemigo();
+            collision.transform.GetComponent<EnemyController>().bajarVida();
         }
         Destroy(gameObject);
     }
