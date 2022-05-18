@@ -29,10 +29,15 @@ public class FireballController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.transform.CompareTag("enemy"))
+        if(collision.transform.CompareTag("enemy"))
         {
+            //Debug.Log("esEnemigo");
             bp.hitEnemigo();
             collision.transform.GetComponent<EnemyController>().bajarVida();
+        }else if (collision.transform.CompareTag("Boss"))
+        {
+            bp.hitEnemigo();
+            collision.transform.GetComponent<BossController>().bajarVida();
         }
         Destroy(gameObject);
     }

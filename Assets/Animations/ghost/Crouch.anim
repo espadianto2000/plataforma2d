@@ -31,6 +31,18 @@ AnimationClip:
       value: {fileID: 1125217558171661179, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
     - time: 1
       value: {fileID: -3059708304861996136, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
+    - time: 1.2
+      value: {fileID: -1700983939248830046, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
+    - time: 1.4
+      value: {fileID: 1752178072857774782, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
+    - time: 1.6
+      value: {fileID: 243891982021676416, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
+    - time: 1.8
+      value: {fileID: 8956253753065996150, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
+    - time: 2
+      value: {fileID: 1125217558171661179, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
+    - time: 2.2
+      value: {fileID: -3059708304861996136, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -56,12 +68,18 @@ AnimationClip:
     - {fileID: 8956253753065996150, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
     - {fileID: 1125217558171661179, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
     - {fileID: -3059708304861996136, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
+    - {fileID: -1700983939248830046, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
+    - {fileID: 1752178072857774782, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
+    - {fileID: 243891982021676416, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
+    - {fileID: 8956253753065996150, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
+    - {fileID: 1125217558171661179, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
+    - {fileID: -3059708304861996136, guid: 525c77a822f27a8498b9040a40f3b382, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.2
+    m_StopTime: 2.4
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -80,4 +98,25 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: inicioTP
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.6
+    functionName: teleport
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 2.2
+    functionName: endTeleport
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

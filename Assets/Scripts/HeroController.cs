@@ -1,4 +1,5 @@
-
+using System.Collections;
+using System.Collections.Generic;
 using System;
 using UnityEngine;
 
@@ -36,6 +37,8 @@ public class HeroController : MonoBehaviour
     private bool doubleJ = true;
     public Collider2D platColl;
     public bool cayendo = false;
+    public bool vulnerable = true;
+    public GameObject grave;
     
 
     private void Start()
@@ -51,6 +54,10 @@ public class HeroController : MonoBehaviour
     {
         if (vivo)
         {
+            if (!vulnerable)
+            {
+                mSpriteRenderer.enabled = mSpriteRenderer.enabled? false: true;
+            }
             if (!dash)
             {
                 mMovement = Input.GetAxis("Horizontal");
@@ -99,7 +106,7 @@ public class HeroController : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
             {
-                if (/*bp.sl.fillAmount >= 1*/true)
+                if (bp.sl.fillAmount >= 1)
                 {
                     dashear();
                     bp.sl.fillAmount = 0;
@@ -171,6 +178,7 @@ public class HeroController : MonoBehaviour
         Collider2D[] cols = GetComponents<Collider2D>();
         cols[0].enabled = false;
         mAnimator.SetTrigger("dash");
+        vulnerable = false;
         if (transform.rotation.y == 0)
         {
             posDash = new Vector3(transform.position.x + 5f, transform.position.y, transform.position.z);
@@ -197,7 +205,7 @@ public class HeroController : MonoBehaviour
             cols[0].enabled = true;
         }
         dash = false;
-        
+        vulnerabilidad();
     }
 
     public bool IsOnAir()
@@ -255,5 +263,18 @@ public class HeroController : MonoBehaviour
         vivo = false;
         mRigidBody.velocity = Vector3.zero;
         mRigidBody.gravityScale = 0;
+        Instantiate(grave, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
+    public void hit()
+    {
+        vulnerable = false;
+        bv.bajarVida();
+        Invoke("vulnerabilidad", 1.5f);
+    }
+    void vulnerabilidad()
+    {
+        mSpriteRenderer.enabled = true;
+        vulnerable = true;
     }
 }
