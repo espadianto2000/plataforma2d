@@ -181,11 +181,11 @@ public class HeroController : MonoBehaviour
         vulnerable = false;
         if (transform.rotation.y == 0)
         {
-            posDash = new Vector3(transform.position.x + 5f, transform.position.y, transform.position.z);
+            posDash = new Vector3(transform.position.x + 7f, transform.position.y, transform.position.z);
         }
         else
         {
-            posDash = new Vector3(transform.position.x - 5f, transform.position.y, transform.position.z);
+            posDash = new Vector3(transform.position.x - 7f, transform.position.y, transform.position.z);
         }
         dash = true;
         Debug.Log("dash");
@@ -198,7 +198,13 @@ public class HeroController : MonoBehaviour
         if(platColl)
         {
             Debug.Log("intersecta");
-            bv.sl.fillAmount = 0;
+            bv.sl.fillAmount -= 1;
+            cols[1].enabled = false;
+            vivo = false;
+            mRigidBody.velocity = Vector3.zero;
+            mRigidBody.gravityScale = 0;
+            Instantiate(grave, transform.position, Quaternion.identity);
+            Destroy(gameObject);
         }
         else
         {

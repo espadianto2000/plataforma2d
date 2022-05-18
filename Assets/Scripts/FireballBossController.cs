@@ -23,8 +23,8 @@ public class FireballBossController : MonoBehaviour
             if (collision.transform.GetComponent<HeroController>().vulnerable)
             {
                 collision.transform.GetComponent<HeroController>().hit();
-                Destroy(gameObject);
             }
+            Destroy(gameObject);
         }
     }
 }

@@ -54,3 +54,6 @@ TagManager:
   - name: Foreground
     uniqueID: 3185716367
     locked: 0
+  - name: personajes
+    uniqueID: 1950932743
+    locked: 0

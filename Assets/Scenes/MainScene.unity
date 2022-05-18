@@ -419,8 +419,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1950932743
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 2281159582846828405, guid: 74bfae34b8697674da3c05f1cc35b90b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -501,7 +501,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 175268236a63b8f4a8aa62fe49f94e7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  speed: 4.5
   animator: {fileID: 457923088}
   spriteRenderer: {fileID: 457923089}
   vidaMax: 100
@@ -510,7 +510,7 @@ MonoBehaviour:
   timerAttack: 5
   proyectil: {fileID: 1939245619601230, guid: d2f2f92c494bd1c41970791d8041c000, type: 3}
   puntoFireBall: {fileID: 1838820774}
-  timerTP: 7
+  timerTP: 5
   portal: {fileID: 1948186733737398119, guid: 177bc5f6e7b51e04781ea881ee5fff05, type: 3}
   at1: {fileID: 1474458709}
   at2: {fileID: 817476132}
@@ -603,7 +603,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1543,7 +1543,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1056137679}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 8
+    OrthographicSize: 10
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -1901,8 +1901,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1109250929
-  m_SortingLayer: 2
+  m_SortingLayerID: 1950932743
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9d059a7f186fec640ad0e74bededbd6e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1943,7 +1943,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1980,16 +1980,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c56ca28d9c169f40b69b599d39a84d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 9
   accel: 2
-  deccel: 1
+  deccel: 4
   speedExp: 2
   raycastDistance: 0.2
-  jumpForce: 7
+  jumpForce: 40
   fallMultiplier: 10
   fireball: {fileID: 1525493616844354, guid: a7c8b6f2a4acbd34aa0ea5ae6c7401fa, type: 3}
   bp: {fileID: 1069823914}
-  velDash: 20
+  velDash: 25
   bv: {fileID: 1636588182}
   platColl: {fileID: 0}
   cayendo: 0

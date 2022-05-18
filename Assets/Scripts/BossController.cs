@@ -120,7 +120,7 @@ public class BossController : MonoBehaviour
     }
     public void teleport()
     {
-        transform.position = new Vector3(transform.position.x, player.transform.position.y + 0.5f, transform.position.z);
+        transform.position = new Vector3(transform.position.x, p2.transform.position.y, transform.position.z);
         Destroy(p1);
         Destroy(p2);
     }
@@ -139,7 +139,7 @@ public class BossController : MonoBehaviour
     {
         //transform.position = new Vector3(spriteRenderer.flipX ? transform.position.x - 1.5f : transform.position.x + 1.5f, transform.position.y, transform.position.z);
         //transform.position = Vector3.MoveTowards(transform.position, new Vector3(spriteRenderer.flipX ? transform.position.x - 20 : transform.position.x + 20, transform.position.y, transform.position.z),30*Time.deltaTime);
-        GetComponent<Rigidbody2D>().velocity = transform.rotation.y != 0 ? Vector2.left * 7.5f : Vector2.right * 7.5f;
+        GetComponent<Rigidbody2D>().velocity = transform.rotation.y != 0 ? Vector2.left * 10f : Vector2.right * 10f;
         //GetComponent<Rigidbody2D>().AddForce(spriteRenderer.flipX ? Vector2.left * 25f : Vector2.right * 25f, ForceMode2D.Impulse);
     }
     public void desactivarTriggers()
