@@ -11,6 +11,8 @@ TagManager:
   - Boss
   - FxTemporaire
   - FireballBoss
+  - BossActivator
+  - FloorDeathLimiter
   layers:
   - Default
   - TransparentFX

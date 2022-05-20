@@ -22,6 +22,11 @@ public class barraVida : MonoBehaviour
     {
         sl.fillAmount += 0.2f;
     }
+    public void Die()
+    {
+        sl.fillAmount = 0f;
+        mDead?.Invoke(this, EventArgs.Empty);
+    }
     public void AddDeadDelegate(EventHandler eventHandler)
     {
         mDead += eventHandler;

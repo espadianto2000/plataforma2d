@@ -8,6 +8,8 @@ public class FireballBossController : MonoBehaviour
     public float speed;
     Vector3 dir;
 
+    private float timer;
+
     private void Start()
     {
         dir = (destino - gameObject.transform.position).normalized;
@@ -15,6 +17,11 @@ public class FireballBossController : MonoBehaviour
     void Update()
     {
         transform.position += dir * Time.deltaTime * speed;
+        timer += Time.deltaTime;
+        if (timer >= 3f)
+        {
+            DestroyObject();
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -26,5 +33,10 @@ public class FireballBossController : MonoBehaviour
             }
             Destroy(gameObject);
         }
+    }
+
+    public void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 }

@@ -39,7 +39,10 @@ public class HeroController : MonoBehaviour
     public bool cayendo = false;
     public bool vulnerable = true;
     public GameObject grave;
-    
+
+    // Adiciones
+    public GameObject boss;
+    private AudioManager audioManager;
 
     private void Start()
     {
@@ -47,6 +50,7 @@ public class HeroController : MonoBehaviour
         mAnimator = GetComponent<Animator>();
         mSpriteRenderer = GetComponent<SpriteRenderer>();
         mFireballPoint = transform.Find("FireballPoint");
+        audioManager = AudioManager.instance;
         bv.AddDeadDelegate(onDeadDelegate);
     }
 
@@ -253,6 +257,15 @@ public class HeroController : MonoBehaviour
         if (collision.CompareTag("platform"))
         {
             platColl = collision;
+        }
+        else if (collision.CompareTag("BossActivator"))
+        {
+            StartCoroutine(audioManager.Crossfade(0, 1));
+            boss.SetActive(true);
+        }
+        else if (collision.CompareTag("FloorDeathLimiter"))
+        {
+            bv.Die();
         }
     }
     private void OnTriggerExit2D(Collider2D collision)

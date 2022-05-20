@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BossController : MonoBehaviour
 {
     GameObject player;
+    GameObject bossActivator;
     bool vivo = true;
     public float speed;
     bool caminando = true;
@@ -25,10 +26,18 @@ public class BossController : MonoBehaviour
     public GameObject at1;
     public GameObject at2;
     public GameObject at3;
+
+    //Adiciones
+    public AudioSource swordSlashAS;
+    public AudioSource teleportAS;
+    private AudioManager audioManager;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Hero");
+        bossActivator = GameObject.Find("BossActivator");
+        audioManager = AudioManager.instance;
         vida = vidaMax;
         animator.SetInteger("state", 1);
     }
@@ -89,6 +98,7 @@ public class BossController : MonoBehaviour
             }
             if(vidaSlider.value <= 0)
             {
+                StartCoroutine(audioManager.Crossfade(1,2));
                 vivo = false;
                 animator.SetTrigger("die");
                 GetComponent<Rigidbody2D>().velocity = Vector2.zero;
@@ -103,7 +113,7 @@ public class BossController : MonoBehaviour
             {
                 timerAttack -= Time.deltaTime;
             }
-            else if(player!=null && Vector2.Distance(transform.position, player.transform.position) > 7)
+            else if(player!=null && Vector2.Distance(transform.position, player.transform.position) > 7 && player.transform.position.x > bossActivator.transform.position.x)
             {
                 timerAttack = 5;
                 //puntoFireBall.transform.position = new Vector3(puntoFireBall.transform.position.x, transform.rotation.y == 180 ? -0.79f : 0.79f, puntoFireBall.transform.position.z);
@@ -180,6 +190,14 @@ public class BossController : MonoBehaviour
 
         GameObject obj = Instantiate(proyectil, puntoFireBall.transform.position, Quaternion.Euler(new Vector3(0, 0, angle + 90f)));
         obj.GetComponent<FireballBossController>().destino = player.transform.position;
+    }
+    public void PlaySwordSlashSound()
+    {
+        swordSlashAS.Play();
+    }
+    public void PlayTeleportSound()
+    {
+        teleportAS.Play();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
