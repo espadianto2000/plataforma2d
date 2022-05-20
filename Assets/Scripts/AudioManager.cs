@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public AudioSource normalSong;
     public AudioSource bossSong;
     public AudioSource victorySong;
+    public AudioSource deathSound;
 
     private AudioSource[] songsList;
 
@@ -52,5 +53,10 @@ public class AudioManager : MonoBehaviour
         s1.Stop();
         s1.volume = sourceVolume;
         s2.Play();
+    }
+
+    public void PlayDeathSound()
+    {
+        deathSound.Play();
     }
 }

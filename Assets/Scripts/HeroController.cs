@@ -25,6 +25,7 @@ public class HeroController : MonoBehaviour
     private bool dash = false;
     private Vector3 posDash = Vector3.zero;
     public float velDash;
+    public AudioSource dashAS;
 
     [Header("vida")]
     public barraVida bv;
@@ -192,6 +193,7 @@ public class HeroController : MonoBehaviour
             posDash = new Vector3(transform.position.x - 7f, transform.position.y, transform.position.z);
         }
         dash = true;
+        dashAS.Play();
         Debug.Log("dash");
     }
     private void terminarDash()
@@ -277,6 +279,7 @@ public class HeroController : MonoBehaviour
     }
     private void onDeadDelegate(object sender, EventArgs e)
     {
+        audioManager.PlayDeathSound();
         Collider2D[] cols = GetComponents<Collider2D>();
         cols[1].enabled = false;
         vivo = false;
