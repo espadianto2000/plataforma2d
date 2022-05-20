@@ -84,7 +84,7 @@ public class BossController : MonoBehaviour
                 {
                     animator.SetInteger("state", 1);
                 }
-                if (Mathf.Abs(player.transform.position.y - transform.position.y) > 7)
+                if (Vector2.Distance(player.transform.position, transform.position) > 7)
                 {
                     if (timerTP > 0)
                     {
@@ -126,11 +126,11 @@ public class BossController : MonoBehaviour
     public void inicioTP()
     {
         p1 = Instantiate(portal, new Vector3(transform.position.x, transform.position.y - 0.25f, transform.position.z), Quaternion.identity);
-        p2 = Instantiate(portal, new Vector3(transform.position.x, player.transform.position.y - 0.25f, transform.position.z), Quaternion.identity);
+        p2 = Instantiate(portal, new Vector3(Random.Range(0, 2) == 0 ? player.transform.position.x + 1 : player.transform.position.x - 1, player.transform.position.y - 0.25f, transform.position.z), Quaternion.identity);
     }
     public void teleport()
     {
-        transform.position = new Vector3(transform.position.x, p2.transform.position.y, transform.position.z);
+        transform.position = p2.transform.position;
         Destroy(p1);
         Destroy(p2);
     }
