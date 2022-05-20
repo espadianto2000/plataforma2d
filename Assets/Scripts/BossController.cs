@@ -176,7 +176,7 @@ public class BossController : MonoBehaviour
     }
     public void pararAvance()
     {
-        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        GetComponent<Rigidbody2D>().velocity = new Vector2(0, GetComponent<Rigidbody2D>().velocity.y > 0 ? 0 : GetComponent<Rigidbody2D>().velocity.y);
     }
     public void instanciarProyectil()
     {

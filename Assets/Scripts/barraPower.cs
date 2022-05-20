@@ -6,19 +6,15 @@ using UnityEngine.UI;
 public class barraPower : MonoBehaviour
 {
     public Image sl;
+    public Image poder;
 
-    void Start()
+    private void Update()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Color color = sl.fillAmount>=1 ? new Color(255f,255f,0f) : Color.white;
+        poder.color = color;
     }
     public void hitEnemigo()
     {
-        sl.fillAmount += sl.fillAmount>=1 ? 0 : 0.25f;
+        sl.fillAmount += sl.fillAmount>=1 ? 0 : 0.143f;
     }
 }
